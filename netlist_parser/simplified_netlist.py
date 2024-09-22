@@ -121,7 +121,6 @@ class Simplified_Netlist:
         # 3. Load pipegen/blob yamls
         self.load_temporal_epochs(rundir)
 
-
         # 4. Cache the output_ops for each queue
         all_queue_ids = self._queues.keys()
         for graph_id, graph in self.graphs.items():
