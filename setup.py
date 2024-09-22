@@ -14,6 +14,8 @@ from distutils.version import LooseVersion
 from setuptools import setup, Extension, find_packages
 from setuptools.command.build_ext import build_ext
 
+os.environ["BACKEND_ARCH_NAME"] = "wormhole_b0"
+
 # BudaBackend files to be copied over
 bbe_files = {
     "lib": {

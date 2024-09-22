@@ -1,0 +1,21 @@
+version: '3'
+services:
+  ttbuda_env:
+    image: ttbuda_env:latest
+    container_name: ttbuda_env
+    command: tail -f /dev/null
+    cap_add:
+      - SYS_NICE
+    shm_size: '4g'
+    volumes:
+      - /dev/hugepages:/dev/hugepages-1G
+      - .:/home/tt-buda
+    deploy:
+      resources:
+        limits:
+          cpus: '60'
+        reservations:
+          cpus: '60'
+    cpuset: '0-59'
+
+   

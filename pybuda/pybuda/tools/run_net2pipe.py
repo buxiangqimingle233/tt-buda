@@ -36,10 +36,10 @@ def generate_blobgen_cmd(
     temporal_epoch,
     chip_ids,
 ):
-    # TODO: This blobgen is deprecated. Use src/blobgen2 c++ code.
-    # Even further, this whole file shouldn't exist. There are exactly the same python
-    # tools located in third_party/budabackend/verif/common
-    blobgen_exe = root + "/tb/llk_tb/overlay/blob_gen.rb"
+    # blobgen_exe = root + "/tb/llk_tb/overlay/blob_gen.rb"
+
+    # HACK: the blobgen has been moved to src/overlay
+    blobgen_exe = root + "src/overlay/blob_gen.rb"
     temporal_epoch_graph_name = "pipegen_epoch" + str(temporal_epoch)
  
     # parse general spec
