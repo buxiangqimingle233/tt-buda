@@ -152,6 +152,8 @@ class OnChipCoordinate:
             return self._device.noc0_to_netlist(self._noc0_coord)
         elif output_type == "nocTr":
             return self._device.noc0_to_nocTr(self._noc0_coord)
+        elif output_type == "netrace":
+            return self._device.noc0_to_netrace(self._noc0_coord)
         else:
             raise Exception("Unknown output coordinate system: " + output_type)
 

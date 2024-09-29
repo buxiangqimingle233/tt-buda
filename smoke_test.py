@@ -28,7 +28,7 @@ def test_module_direct_pytorch():
 
     tt0 = pybuda.TTDevice(
         name="tt_device_0",  # here we can give our device any name we wish, for tracking purposes
-        arch=pybuda.BackendDevice.Grayskull,  # we set the target device architecture to compile for
+        arch=pybuda.BackendDevice.Wormhole_B0,  # we set the target device architecture to compile for
         devtype=pybuda.BackendType.Golden  # we set the target backend type to be Golden for running off device
     )
 

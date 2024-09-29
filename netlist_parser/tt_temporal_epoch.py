@@ -80,13 +80,13 @@ class TemporalEpoch(TTObject):
 
         for g_name, pipegen_graph in self.pipegen_yaml.root["graphs"].items():
             netlist_graph = self.netlist.graphs[g_name]
-            print(g_name, netlist_graph)
             netlist_graph.temporal_epoch.buffers = TTObjectIDDict()
             netlist_graph.temporal_epoch = self
             self.graphs.add(netlist_graph)
 
             for bid, val in pipegen_graph.items():
                 b = Buffer(netlist_graph, val)
+                # print(b.root['tile_size'])
                 netlist_graph.temporal_epoch.buffers.add(b)
                 uniqid = val["uniqid"]
 
@@ -101,15 +101,22 @@ class TemporalEpoch(TTObject):
                     y = y + 2 if y > 4 else y + 1
 
                 self.core_buffers_map[(chip, x, y)].append(b.id())
+                
                 for r in range(
                     1, val["replicate"]
                 ):  # Handle replicated buffers (see issue #326)
-                    val_copy = copy(val)
+
+                    val_copy = copy(val)        # copy.copy does not work for this RymLazyDictionary val, the tree still points to the old one
+                    val_copy.real_copy_from(val)     # We explicitly allocated a new ryml.ryml.tree
                     val_copy["uniqid"] = uniqid + r * val["scatter_gather_num_tiles"]
-                    b = Buffer(self, val_copy)
-                    self.buffers[b.id()] = b
+
+                    rb = Buffer(self, val_copy)
+                    self.buffers[rb.id()] = rb
                     self.core_buffers_map[(chip, x, y)].append(b.id())
-                    b.replicated = True
+                    rb.replicated = True
+
+                    # We also need to track the replicated buffer in the base buffer
+                    b.add_replicated_buffer(rb)
 
             for pid, val in pipes.items():
                 p = Pipe(self, val)

@@ -12,3 +12,4 @@ RUN apt-get update -y && \
 
 # Step 4: Update pip
 RUN pip install --upgrade pip==24.0
+

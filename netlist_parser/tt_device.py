@@ -324,6 +324,10 @@ class Device(TTObject):
             raise CoordinateTranslationError(
                 f"noc0_to_netlist: noc0_loc {noc0_loc} does not translate to a valid netlist location"
             )
+    
+    def noc0_to_netrace(self, noc0_loc):
+        X_DIM_SIXE = max(self.DIE_X_TO_NOC_0_X) + 1
+        return X_DIM_SIXE * noc0_loc[0] + noc0_loc[1] 
 
     def netlist_to_noc0(self, netlist_loc):
         try:

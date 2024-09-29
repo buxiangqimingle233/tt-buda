@@ -7,7 +7,7 @@ from tabulate import tabulate
 from sortedcontainers import SortedSet
 import traceback, socket
 import ryml, yaml
-
+from copy import deepcopy, copy
 
 # Pretty print exceptions (traceback)
 def notify_exception(exc_type, exc_value, tb):
@@ -321,6 +321,14 @@ class RymlLazyDictionary(Mapping[KeyType, ValueType]):
         self.node = node
         self.length = self.tree.num_children(self.node)
         self._items = dict()
+
+    def real_copy_from(self, other):
+        self.node = deepcopy(other.node)
+        self.length = deepcopy(other.length)
+        self._items = copy(other._items)
+        # self._items = deepcopy(other._items)
+        # We should construct a new tree from the original one
+        self.tree = ryml.parse_in_arena(ryml.emit_yaml(self.tree))
 
     @cached_property
     def child_nodes(self):

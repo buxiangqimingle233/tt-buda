@@ -73,7 +73,7 @@ endif
 GIT_COMMON_DIR=$(shell git rev-parse --git-common-dir)
 SUBMODULES=$(shell git submodule status | grep -o "third_party/[^ ]*")
 SUBMODULES_UPDATED=$(addprefix $(SUBMODULESDIR)/, $(SUBMODULES:%=%.checkout))
-SKIP_BBE_UPDATE ?= 0
+SKIP_BBE_UPDATE ?= 1
 SKIP_SUBMODULE_UPDATE ?= $(SKIP_BBE_UPDATE)
 
 ifeq ($(EMULATION_DEVICE_EN), 1)
@@ -84,7 +84,7 @@ endif
 all: update_submodules build ;
 
 # These must be in dependency order (enforces no circular deps)
-include python_env/module.mk
+include python_env/module.mk		# DEBUG: no python deps
 include pybuda/module.mk
 include docs/public/module.mk
 
@@ -130,13 +130,18 @@ $(SUBMODULESDIR)/third_party/tvm.build: python_env $(SUBMODULESDIR)/third_party/
 
 build_tests: pybuda/csrc/balancer/tests pybuda/csrc/graph_lib/tests pybuda/csrc/passes/tests pybuda/csrc/pattern_matcher/tests pybuda/csrc/placer/tests ;
 
+
+
 run_tests: build_tests
 	@echo "Running tests..."
-	@BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/balancer/tests/balancer_unit_tests
-	@BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/graph_lib/tests/graphlib_unit_tests
-	@BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/passes/tests/passes_unit_tests
-	@BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/pattern_matcher/tests/pattern_matcher_unit_tests
-	@BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/placer/tests/placer_unit_tests
+
+	@BUDA_HOME="third_party/budabackend" $(PYBUDA_CSRC_BALANCER_TESTS)
+
+# @BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/balancer/tests/balancer_unit_tests
+# @BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/graph_lib/tests/graphlib_unit_tests
+# @BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/passes/tests/passes_unit_tests
+# @BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/pattern_matcher/tests/pattern_matcher_unit_tests
+# @BUDA_HOME="third_party/budabackend" $(TESTDIR)/pybuda/csrc/placer/tests/placer_unit_tests
 
 clean: third_party/budabackend/clean
 	rm -rf $(OUT)

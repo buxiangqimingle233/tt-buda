@@ -455,6 +455,7 @@ class Graph(TTObject):
         return ret_val
 
     def get_pipes(self, where):
+        
         ret_val = TTObjectIDDict()
         if type(where) == int:
             ret_val.update(
