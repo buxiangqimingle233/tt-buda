@@ -1,0 +1,8 @@
+{
+  "test_name": "direct_pt",   "dram": 1,
+  "Dynamic DRAM Map for Bank 0": [
+{"queue_name": "weights1", "base": 805298016, "size": 8352, "allocation_cycle": 0}
+], 
+  "Dynamic DRAM Map for Bank 1": [
+{"queue_name": "weights2", "base": 2147475296, "size": 8352, "allocation_cycle": 0}
+]}

@@ -1,0 +1,112 @@
+{
+    "graph": {},
+    "nodes": {
+        "act1": {
+            "cache": {
+                "shape": [
+                    "1",
+                    "128",
+                    "32"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "act1",
+            "opcode": "Input",
+            "output_nodes": [
+                "tvmgen_default_pybuda_main_0_4"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 0
+        },
+        "act2": {
+            "cache": {
+                "shape": [
+                    "1",
+                    "128",
+                    "32"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "act2",
+            "opcode": "Input",
+            "output_nodes": [
+                "tvmgen_default_pybuda_main_0_4"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 1
+        },
+        "tvmgen_default_pybuda_main_0_4": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "tvmgen_default_pybuda_main_0",
+            "epoch": 0,
+            "input_nodes": [
+                "act1",
+                "weights1",
+                "act2",
+                "weights2"
+            ],
+            "ir": "pybuda",
+            "name": "tvmgen_default_pybuda_main_0_4",
+            "opcode": "RelayOp",
+            "output_nodes": [],
+            "pybuda": 1,
+            "span": "None",
+            "type": "tvmgen_default_pybuda_main_0",
+            "unique_id": 4
+        },
+        "weights1": {
+            "cache": {
+                "shape": [
+                    "32",
+                    "128"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "weights1",
+            "opcode": "Input",
+            "output_nodes": [
+                "tvmgen_default_pybuda_main_0_4"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 2
+        },
+        "weights2": {
+            "cache": {
+                "shape": [
+                    "32",
+                    "128"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "weights2",
+            "opcode": "Input",
+            "output_nodes": [
+                "tvmgen_default_pybuda_main_0_4"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 3
+        }
+    }
+}

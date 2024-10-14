@@ -1,0 +1,555 @@
+{
+    "graph": {},
+    "nodes": {
+        "act1": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    32
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "act1",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: reshape_0.dc.squeeze.0 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "reshape_0.dc.squeeze.0"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": false,
+            "tags": {
+                "original_op_name": "act1"
+            },
+            "tile_broadcast": [],
+            "type": "Input::input",
+            "unique_id": 11
+        },
+        "act2": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    32
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "act2",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: reshape_3.dc.squeeze.0 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "reshape_3.dc.squeeze.0"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": false,
+            "tags": {
+                "original_op_name": "act2"
+            },
+            "tile_broadcast": [],
+            "type": "Input::input",
+            "unique_id": 12
+        },
+        "add_6": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "add",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: matmul_1 (port_0)",
+                "Data: reshape_5.dc.unsqueeze.0 (port_1)"
+            ],
+            "input_node_to_edge_type": {
+                "matmul_1": "Data",
+                "reshape_5.dc.unsqueeze.0": "Data"
+            },
+            "input_nodes": [
+                "matmul_1",
+                "reshape_5.dc.unsqueeze.0"
+            ],
+            "input_tms": [
+                [],
+                []
+            ],
+            "ir": "pybuda",
+            "name": "add_6",
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "add"
+            },
+            "opcode": "PyBudaOp",
+            "outgoing_edge_port_info": [
+                "Data: reshape_2.dc.unsqueeze.0 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "reshape_2.dc.unsqueeze.0"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "add_6",
+                "original_op_type": "add"
+            },
+            "type": "add",
+            "unique_id": 2
+        },
+        "direct_pt.output_add_6": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "Output",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: reshape_2.dc.unsqueeze.0 (port_0)"
+            ],
+            "input_node_to_edge_type": {
+                "reshape_2.dc.unsqueeze.0": "Data"
+            },
+            "input_nodes": [
+                "reshape_2.dc.unsqueeze.0"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "is_saved_intermediate": false,
+            "memory_access": "FIFO",
+            "name": "direct_pt.output_add_6",
+            "opcode": "Output",
+            "outgoing_edge_port_info": [],
+            "output_df": "Float32",
+            "output_nodes": [],
+            "pybuda": 1,
+            "queue_type": "output",
+            "tags": {},
+            "type": "Output",
+            "unique_id": 1
+        },
+        "matmul_1": {
+            "cache": {
+                "shape": [
+                    128,
+                    128
+                ]
+            },
+            "class": "matmul",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: reshape_0.dc.squeeze.0 (port_0)",
+                "Data: weights1 (port_1)"
+            ],
+            "input_node_to_edge_type": {
+                "reshape_0.dc.squeeze.0": "Data",
+                "weights1": "Data"
+            },
+            "input_nodes": [
+                "reshape_0.dc.squeeze.0",
+                "weights1"
+            ],
+            "input_tms": [
+                [],
+                []
+            ],
+            "ir": "pybuda",
+            "name": "matmul_1",
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "matmul"
+            },
+            "opcode": "PyBudaOp",
+            "outgoing_edge_port_info": [
+                "Data: add_6 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "add_6"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "matmul_1",
+                "original_op_type": "matmul"
+            },
+            "type": "matmul",
+            "unique_id": 5
+        },
+        "matmul_4": {
+            "cache": {
+                "shape": [
+                    128,
+                    128
+                ]
+            },
+            "class": "matmul",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: reshape_3.dc.squeeze.0 (port_0)",
+                "Data: weights2 (port_1)"
+            ],
+            "input_node_to_edge_type": {
+                "reshape_3.dc.squeeze.0": "Data",
+                "weights2": "Data"
+            },
+            "input_nodes": [
+                "reshape_3.dc.squeeze.0",
+                "weights2"
+            ],
+            "input_tms": [
+                [],
+                []
+            ],
+            "ir": "pybuda",
+            "name": "matmul_4",
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "matmul"
+            },
+            "opcode": "PyBudaOp",
+            "outgoing_edge_port_info": [
+                "Data: reshape_5.dc.unsqueeze.0 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "reshape_5.dc.unsqueeze.0"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "matmul_4",
+                "original_op_type": "matmul"
+            },
+            "type": "matmul",
+            "unique_id": 6
+        },
+        "reshape_0.dc.squeeze.0": {
+            "cache": {
+                "shape": [
+                    128,
+                    32
+                ]
+            },
+            "class": "squeeze(0,)",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: act1 (port_0)"
+            ],
+            "input_node_to_edge_type": {
+                "act1": "Data"
+            },
+            "input_nodes": [
+                "act1"
+            ],
+            "input_tms": [
+                []
+            ],
+            "ir": "pybuda",
+            "name": "reshape_0.dc.squeeze.0",
+            "op_type": {
+                "attrs": [
+                    0
+                ],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "squeeze"
+            },
+            "opcode": "PyBudaOp",
+            "outgoing_edge_port_info": [
+                "Data: matmul_1 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "matmul_1"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "reshape_0",
+                "original_op_type": "reshape"
+            },
+            "type": "squeeze",
+            "unique_id": 13
+        },
+        "reshape_2.dc.unsqueeze.0": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "unsqueeze(0,2,)",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: add_6 (port_0)"
+            ],
+            "input_node_to_edge_type": {
+                "add_6": "Data"
+            },
+            "input_nodes": [
+                "add_6"
+            ],
+            "input_tms": [
+                []
+            ],
+            "ir": "pybuda",
+            "name": "reshape_2.dc.unsqueeze.0",
+            "op_type": {
+                "attrs": [
+                    0,
+                    2
+                ],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "unsqueeze"
+            },
+            "opcode": "PyBudaOp",
+            "outgoing_edge_port_info": [
+                "Data: direct_pt.output_add_6 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "direct_pt.output_add_6"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "reshape_2",
+                "original_op_type": "reshape"
+            },
+            "type": "unsqueeze",
+            "unique_id": 14
+        },
+        "reshape_3.dc.squeeze.0": {
+            "cache": {
+                "shape": [
+                    128,
+                    32
+                ]
+            },
+            "class": "squeeze(0,)",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: act2 (port_0)"
+            ],
+            "input_node_to_edge_type": {
+                "act2": "Data"
+            },
+            "input_nodes": [
+                "act2"
+            ],
+            "input_tms": [
+                []
+            ],
+            "ir": "pybuda",
+            "name": "reshape_3.dc.squeeze.0",
+            "op_type": {
+                "attrs": [
+                    0
+                ],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "squeeze"
+            },
+            "opcode": "PyBudaOp",
+            "outgoing_edge_port_info": [
+                "Data: matmul_4 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "matmul_4"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "reshape_3",
+                "original_op_type": "reshape"
+            },
+            "type": "squeeze",
+            "unique_id": 15
+        },
+        "reshape_5.dc.unsqueeze.0": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "unsqueeze(0,2,)",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: matmul_4 (port_0)"
+            ],
+            "input_node_to_edge_type": {
+                "matmul_4": "Data"
+            },
+            "input_nodes": [
+                "matmul_4"
+            ],
+            "input_tms": [
+                []
+            ],
+            "ir": "pybuda",
+            "name": "reshape_5.dc.unsqueeze.0",
+            "op_type": {
+                "attrs": [
+                    0,
+                    2
+                ],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "unsqueeze"
+            },
+            "opcode": "PyBudaOp",
+            "outgoing_edge_port_info": [
+                "Data: add_6 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "add_6"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "reshape_5",
+                "original_op_type": "reshape"
+            },
+            "type": "unsqueeze",
+            "unique_id": 16
+        },
+        "weights1": {
+            "cache": {
+                "shape": [
+                    32,
+                    128
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "weights1",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_1 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "matmul_1"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "weights1"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 8
+        },
+        "weights2": {
+            "cache": {
+                "shape": [
+                    32,
+                    128
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "weights2",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_4 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "matmul_4"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "weights2"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 10
+        }
+    },
+    "topological_sorted_nodes": [
+        "act1",
+        "reshape_0.dc.squeeze.0",
+        "weights1",
+        "matmul_1",
+        "act2",
+        "reshape_3.dc.squeeze.0",
+        "weights2",
+        "matmul_4",
+        "reshape_5.dc.unsqueeze.0",
+        "add_6",
+        "reshape_2.dc.unsqueeze.0",
+        "direct_pt.output_add_6"
+    ]
+}

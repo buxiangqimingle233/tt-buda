@@ -1,0 +1,368 @@
+{
+    "graph": {},
+    "nodes": {
+        "act1": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    128,
+                    32
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "act1",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_1 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_1"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": false,
+            "tags": {
+                "original_op_name": "act1"
+            },
+            "tile_broadcast": [],
+            "type": "Input::input",
+            "unique_id": 18
+        },
+        "act2": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    128,
+                    32
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "act2",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_4 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_4"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": false,
+            "tags": {
+                "original_op_name": "act2"
+            },
+            "tile_broadcast": [],
+            "type": "Input::input",
+            "unique_id": 22
+        },
+        "add_6": {
+            "accumulate_df": "Float16_b",
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "add",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "fidelity": "HiFi3",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: matmul_1 (port_0) ublock_order(r)",
+                "Data: matmul_4 (port_1) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "matmul_1": "Data",
+                "matmul_4": "Data"
+            },
+            "input_nodes": [
+                "matmul_1",
+                "matmul_4"
+            ],
+            "input_tms": [
+                [],
+                []
+            ],
+            "intermediate_df": "Float16_b",
+            "ir": "buda",
+            "name": "add_6",
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "add"
+            },
+            "opcode": "BudaOp",
+            "outgoing_edge_port_info": [
+                "Data: direct_pt.output_add_6 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "direct_pt.output_add_6"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "add_6",
+                "original_op_type": "add"
+            },
+            "type": "add",
+            "unique_id": 26
+        },
+        "direct_pt.output_add_6": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "Output",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: add_6 (port_0) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "add_6": "Data"
+            },
+            "input_nodes": [
+                "add_6"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "is_saved_intermediate": false,
+            "memory_access": "FIFO",
+            "name": "direct_pt.output_add_6",
+            "opcode": "Output",
+            "outgoing_edge_port_info": [],
+            "output_df": "Float16_b",
+            "output_nodes": [],
+            "pybuda": 1,
+            "queue_type": "output",
+            "tags": {},
+            "type": "Output",
+            "unique_id": 28
+        },
+        "matmul_1": {
+            "accumulate_df": "Float16_b",
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "matmul",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "fidelity": "HiFi3",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: act1 (port_0) ublock_order(c)",
+                "Data: weights1 (port_1) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "act1": "Data",
+                "weights1": "Data"
+            },
+            "input_nodes": [
+                "act1",
+                "weights1"
+            ],
+            "input_tms": [
+                [],
+                []
+            ],
+            "intermediate_df": "Float16_b",
+            "ir": "buda",
+            "name": "matmul_1",
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "matmul"
+            },
+            "opcode": "BudaOp",
+            "outgoing_edge_port_info": [
+                "Data: add_6 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "add_6"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "matmul_1",
+                "original_op_type": "matmul"
+            },
+            "type": "matmul",
+            "unique_id": 19
+        },
+        "matmul_4": {
+            "accumulate_df": "Float16_b",
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "matmul",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "fidelity": "HiFi3",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: act2 (port_0) ublock_order(c)",
+                "Data: weights2 (port_1) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "act2": "Data",
+                "weights2": "Data"
+            },
+            "input_nodes": [
+                "act2",
+                "weights2"
+            ],
+            "input_tms": [
+                [],
+                []
+            ],
+            "intermediate_df": "Float16_b",
+            "ir": "buda",
+            "name": "matmul_4",
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "matmul"
+            },
+            "opcode": "BudaOp",
+            "outgoing_edge_port_info": [
+                "Data: add_6 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "add_6"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "PyTorchTestModule::",
+                "original_op_name": "matmul_4",
+                "original_op_type": "matmul"
+            },
+            "type": "matmul",
+            "unique_id": 23
+        },
+        "weights1": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    32,
+                    128
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "RAM",
+            "name": "weights1",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_1 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_1"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "weights1"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 20
+        },
+        "weights2": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    32,
+                    128
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "RAM",
+            "name": "weights2",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_4 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_4"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "weights2"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 24
+        }
+    },
+    "topological_sorted_nodes": [
+        "act1",
+        "weights1",
+        "matmul_1",
+        "act2",
+        "weights2",
+        "matmul_4",
+        "add_6",
+        "direct_pt.output_add_6"
+    ]
+}

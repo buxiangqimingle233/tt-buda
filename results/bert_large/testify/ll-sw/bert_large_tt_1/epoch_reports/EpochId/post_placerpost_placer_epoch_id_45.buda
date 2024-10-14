@@ -1,0 +1,2245 @@
+{
+    "graph": {},
+    "nodes": {
+        "_fused_op_127": {
+            "accumulate_df": "Float16_b",
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "chip_id": 0,
+            "class": "fused_op(0,1,)",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "fidelity": "HiFi3",
+            "gradient_op": false,
+            "grid_end": [
+                6,
+                1
+            ],
+            "grid_start": [
+                0,
+                0
+            ],
+            "incoming_edge_port_info": [
+                "Data: dc.input_tensor.layernorm_959.6 (port_0) ublock_order(r)",
+                "Data: e2e_layernorm_959.dc.reduce_sum.5.lc1_0 (port_1) ublock_order(r)",
+                "Data: dc.input_tensor.layernorm_959.8 (port_2) ublock_order(r)",
+                "Data: e2e__fused_op_126_0 (port_3) ublock_order(r)",
+                "Data: bert.encoder.layer.17.output.LayerNorm.weight (port_4) ublock_order(r)",
+                "Data: bert.encoder.layer.17.output.LayerNorm.bias (port_5) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "bert.encoder.layer.17.output.LayerNorm.bias": "Data",
+                "bert.encoder.layer.17.output.LayerNorm.weight": "Data",
+                "dc.input_tensor.layernorm_959.6": "Data",
+                "dc.input_tensor.layernorm_959.8": "Data",
+                "e2e__fused_op_126_0": "Data",
+                "e2e_layernorm_959.dc.reduce_sum.5.lc1_0": "Data"
+            },
+            "input_nodes": [
+                "dc.input_tensor.layernorm_959.6",
+                "e2e_layernorm_959.dc.reduce_sum.5.lc1_0",
+                "dc.input_tensor.layernorm_959.8",
+                "e2e__fused_op_126_0",
+                "bert.encoder.layer.17.output.LayerNorm.weight",
+                "bert.encoder.layer.17.output.LayerNorm.bias"
+            ],
+            "input_tms": [
+                [],
+                [
+                    {
+                        "op_type": {
+                            "attrs": [
+                                2
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "vstack"
+                        }
+                    }
+                ],
+                [],
+                [],
+                [
+                    {
+                        "op_type": {
+                            "attrs": [
+                                2,
+                                12,
+                                false
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "broadcast"
+                        }
+                    }
+                ],
+                [
+                    {
+                        "op_type": {
+                            "attrs": [
+                                2,
+                                12,
+                                false
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "broadcast"
+                        }
+                    }
+                ]
+            ],
+            "intermediate_df": "Float16_b",
+            "ir": "buda",
+            "name": "_fused_op_127",
+            "op_model": {
+                "execution_cycles": 20748,
+                "grid_shape": [
+                    6,
+                    1
+                ],
+                "input_shapes": [
+                    [
+                        1,
+                        1,
+                        12,
+                        1
+                    ],
+                    [
+                        1,
+                        1,
+                        12,
+                        1
+                    ],
+                    [
+                        1,
+                        1,
+                        12,
+                        1
+                    ],
+                    [
+                        1,
+                        1,
+                        12,
+                        32
+                    ],
+                    [
+                        1,
+                        1,
+                        12,
+                        32
+                    ],
+                    [
+                        1,
+                        1,
+                        12,
+                        32
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 0
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 4
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 0
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 32,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 4
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 32,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 64,
+                        "l1_size_tiles": 64
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 32,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 64,
+                        "l1_size_tiles": 64
+                    }
+                ],
+                "op_model_id": 2865237,
+                "op_type": "fused_op",
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 32,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 128
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "op_type": {
+                "attrs": [
+                    0,
+                    true
+                ],
+                "buda_attrs": {
+                    "kernel_broadcast": {
+                        "input_4": 64,
+                        "input_5": 64
+                    }
+                },
+                "named_attrs": {},
+                "type": "fused_op"
+            },
+            "opcode": "BudaOp",
+            "outgoing_edge_port_info": [
+                "Data: matmul_962 (port_0)",
+                "Data: matmul_968 (port_0)",
+                "Data: e2e__fused_op_127_0 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_962",
+                "matmul_968",
+                "e2e__fused_op_127_0"
+            ],
+            "pybuda": 1,
+            "schedules": [
+                [
+                    "layernorm_959.dc.multiply.7: multiply (1,1,12,1), out: 0",
+                    "layernorm_959.dc.add.9: add (1,1,12,1), out: 0",
+                    "layernorm_959.dc.sqrt.10: sqrt (1,1,12,1), out: 0",
+                    "layernorm_959.dc.reciprocal.11: reciprocal (1,1,12,1), out: 0",
+                    "layernorm_959.dc.multiply.12: multiply (1,1,12,32), out: 0",
+                    "layernorm_959.dc.multiply.13: multiply (1,1,12,32), out: 0",
+                    "layernorm_959.dc.add.14: add (1,1,12,32), out: 0"
+                ]
+            ],
+            "tags": {
+                "original_op_type": "layernorm"
+            },
+            "type": "fused_op",
+            "unique_id": 29782
+        },
+        "_fused_op_128": {
+            "accumulate_df": "Float16_b",
+            "cache": {
+                "shape": [
+                    1,
+                    16,
+                    384,
+                    384
+                ]
+            },
+            "chip_id": 0,
+            "class": "fused_op",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "fidelity": "HiFi3",
+            "gradient_op": false,
+            "grid_end": [
+                6,
+                7
+            ],
+            "grid_start": [
+                0,
+                6
+            ],
+            "incoming_edge_port_info": [
+                "Data: matmul_974 (port_0) ublock_order(r)",
+                "Data: input_1_multiply_976 (port_1) ublock_order(r)",
+                "Data: e2e_multiply_22_attempt_1_input_op_fork_nop2_0 (port_2) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "e2e_multiply_22_attempt_1_input_op_fork_nop2_0": "Data",
+                "input_1_multiply_976": "Data",
+                "matmul_974": "Data"
+            },
+            "input_nodes": [
+                "matmul_974",
+                "input_1_multiply_976",
+                "e2e_multiply_22_attempt_1_input_op_fork_nop2_0"
+            ],
+            "input_tms": [
+                [],
+                [
+                    {
+                        "op_type": {
+                            "attrs": [
+                                3,
+                                12,
+                                false
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "broadcast"
+                        }
+                    },
+                    {
+                        "op_type": {
+                            "attrs": [
+                                2,
+                                12,
+                                false
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "broadcast"
+                        }
+                    },
+                    {
+                        "op_type": {
+                            "attrs": [
+                                1,
+                                16,
+                                false
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "broadcast"
+                        }
+                    }
+                ],
+                [
+                    {
+                        "op_type": {
+                            "attrs": [
+                                2
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "tile_broadcast"
+                        }
+                    },
+                    {
+                        "op_type": {
+                            "attrs": [
+                                2,
+                                12,
+                                false
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "broadcast"
+                        }
+                    },
+                    {
+                        "op_type": {
+                            "attrs": [
+                                1,
+                                16,
+                                false
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "broadcast"
+                        }
+                    }
+                ]
+            ],
+            "intermediate_df": "Float16_b",
+            "ir": "buda",
+            "name": "_fused_op_128",
+            "op_model": {
+                "execution_cycles": 54613,
+                "grid_shape": [
+                    6,
+                    1
+                ],
+                "input_shapes": [
+                    [
+                        1,
+                        16,
+                        12,
+                        12
+                    ],
+                    [
+                        1,
+                        16,
+                        12,
+                        12
+                    ],
+                    [
+                        1,
+                        16,
+                        12,
+                        12
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 16,
+                            "tblock_m": 2,
+                            "tblock_n": 2,
+                            "ublock_ct": 6,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 12
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 16,
+                            "tblock_m": 2,
+                            "tblock_n": 2,
+                            "ublock_ct": 6,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 1,
+                        "l1_size_tiles": 1
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 16,
+                            "tblock_m": 2,
+                            "tblock_n": 2,
+                            "ublock_ct": 6,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 12
+                    }
+                ],
+                "op_model_id": 2641486,
+                "op_type": "fused_op",
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 2,
+                            "mblock_n": 2,
+                            "t": 16,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 6,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 48
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {
+                    "kernel_broadcast": {
+                        "input_1": 1
+                    }
+                },
+                "named_attrs": {},
+                "type": "fused_op"
+            },
+            "opcode": "BudaOp",
+            "outgoing_edge_port_info": [
+                "Data: softmax_978.dc.reduce_max.0 (port_0)",
+                "Data: e2e__fused_op_128_0 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "softmax_978.dc.reduce_max.0",
+                "e2e__fused_op_128_0"
+            ],
+            "pybuda": 1,
+            "schedules": [
+                [
+                    "multiply_976: multiply (1,16,12,12), out: 0",
+                    "add_977: add (1,16,12,12), out: 0"
+                ]
+            ],
+            "tags": {
+                "original_op_type": "add"
+            },
+            "type": "fused_op",
+            "unique_id": 29783
+        },
+        "bert.encoder.layer.17.output.LayerNorm.bias": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    32,
+                    1024
+                ]
+            },
+            "chip_id": 0,
+            "class": "Input::",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "RAM",
+            "name": "bert.encoder.layer.17.output.LayerNorm.bias",
+            "op_model": {
+                "execution_cycles": 0,
+                "grid_shape": [
+                    1,
+                    1
+                ],
+                "input_shapes": [],
+                "inputs": [],
+                "op_model_id": 2937363,
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 32,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 1,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 32
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_127 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_127"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "bert.encoder.layer.17.output.LayerNorm.bias"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 29021
+        },
+        "bert.encoder.layer.17.output.LayerNorm.weight": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    32,
+                    1024
+                ]
+            },
+            "chip_id": 0,
+            "class": "Input::",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "RAM",
+            "name": "bert.encoder.layer.17.output.LayerNorm.weight",
+            "op_model": {
+                "execution_cycles": 0,
+                "grid_shape": [
+                    1,
+                    1
+                ],
+                "input_shapes": [],
+                "inputs": [],
+                "op_model_id": 2937362,
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 32,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 1,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 32
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_127 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_127"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "bert.encoder.layer.17.output.LayerNorm.weight"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 29019
+        },
+        "bert.encoder.layer.18.attention.self.key.bias": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    32,
+                    1024
+                ]
+            },
+            "chip_id": 0,
+            "class": "Input::",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "RAM",
+            "name": "bert.encoder.layer.18.attention.self.key.bias",
+            "op_model": {
+                "execution_cycles": 0,
+                "grid_shape": [
+                    1,
+                    2
+                ],
+                "input_shapes": [],
+                "inputs": [],
+                "op_model_id": 2937367,
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 2,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 8,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 1,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 16
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_968 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_968"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "bert.encoder.layer.18.attention.self.key.bias"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 29031
+        },
+        "bert.encoder.layer.18.attention.self.key.weight": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    1024,
+                    1024
+                ]
+            },
+            "chip_id": 0,
+            "class": "Input::",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "RAM",
+            "name": "bert.encoder.layer.18.attention.self.key.weight",
+            "op_model": {
+                "execution_cycles": 0,
+                "grid_shape": [
+                    4,
+                    2
+                ],
+                "input_shapes": [],
+                "inputs": [],
+                "op_model_id": 2937366,
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 2,
+                            "mblock_n": 2,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 8,
+                            "ublock_rt": 4
+                        },
+                        "buffer_factor": 1,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 128
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_968 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_968"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "bert.encoder.layer.18.attention.self.key.weight"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 29030
+        },
+        "bert.encoder.layer.18.attention.self.query.bias": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    32,
+                    1024
+                ]
+            },
+            "chip_id": 0,
+            "class": "Input::",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "RAM",
+            "name": "bert.encoder.layer.18.attention.self.query.bias",
+            "op_model": {
+                "execution_cycles": 0,
+                "grid_shape": [
+                    1,
+                    2
+                ],
+                "input_shapes": [],
+                "inputs": [],
+                "op_model_id": 2937365,
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 2,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 8,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 1,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 16
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_962 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_962"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "bert.encoder.layer.18.attention.self.query.bias"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 29025
+        },
+        "bert.encoder.layer.18.attention.self.query.weight": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    1024,
+                    1024
+                ]
+            },
+            "chip_id": 0,
+            "class": "Input::",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "RAM",
+            "name": "bert.encoder.layer.18.attention.self.query.weight",
+            "op_model": {
+                "execution_cycles": 0,
+                "grid_shape": [
+                    4,
+                    2
+                ],
+                "input_shapes": [],
+                "inputs": [],
+                "op_model_id": 2937364,
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 2,
+                            "mblock_n": 2,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 8,
+                            "ublock_rt": 4
+                        },
+                        "buffer_factor": 1,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 128
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: matmul_962 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_962"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "bert.encoder.layer.18.attention.self.query.weight"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 29024
+        },
+        "dc.input_tensor.layernorm_959.6": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    384,
+                    32
+                ]
+            },
+            "chip_id": 0,
+            "class": "constant",
+            "constant_dims": [
+                1,
+                384,
+                1
+            ],
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "dc.input_tensor.layernorm_959.6",
+            "op_model": {
+                "execution_cycles": 0,
+                "grid_shape": [
+                    6,
+                    1
+                ],
+                "input_shapes": [],
+                "inputs": [],
+                "op_model_id": 2937360,
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 1,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 2
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_127 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_127"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": false,
+            "tags": {
+                "original_op_type": "layernorm"
+            },
+            "tile_broadcast": [],
+            "type": "Constant",
+            "unique_id": 29010
+        },
+        "dc.input_tensor.layernorm_959.8": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    384,
+                    32
+                ]
+            },
+            "chip_id": 0,
+            "class": "constant",
+            "constant_dims": [
+                1,
+                384,
+                1
+            ],
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "dc.input_tensor.layernorm_959.8",
+            "op_model": {
+                "execution_cycles": 0,
+                "grid_shape": [
+                    6,
+                    1
+                ],
+                "input_shapes": [],
+                "inputs": [],
+                "op_model_id": 2937361,
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 1,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 2
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_127 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_127"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": false,
+            "tags": {
+                "original_op_type": "layernorm"
+            },
+            "tile_broadcast": [],
+            "type": "Constant",
+            "unique_id": 29012
+        },
+        "e2e__fused_op_126_0": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "class": "BudaDramQueue::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: _fused_op_126 (port_0) ublock_order(c)"
+            ],
+            "input_node_to_edge_type": {
+                "_fused_op_126": "Data"
+            },
+            "input_nodes": [
+                "_fused_op_126"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "e2e__fused_op_126_0",
+            "op_model": {
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Queue",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_127 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_127"
+            ],
+            "pybuda": 1,
+            "queue_type": "epoch_to_epoch",
+            "tags": {},
+            "type": "Queue",
+            "unique_id": 31562
+        },
+        "e2e__fused_op_127_0": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "class": "BudaDramQueue::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: _fused_op_127 (port_0) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "_fused_op_127": "Data"
+            },
+            "input_nodes": [
+                "_fused_op_127"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "e2e__fused_op_127_0",
+            "op_model": {
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Queue",
+            "outgoing_edge_port_info": [
+                "Data: matmul_982 (port_0)",
+                "Data: add_997 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_982",
+                "add_997"
+            ],
+            "pybuda": 1,
+            "queue_type": "epoch_to_epoch",
+            "tags": {},
+            "type": "Queue",
+            "unique_id": 31564
+        },
+        "e2e__fused_op_128_0": {
+            "cache": {
+                "shape": [
+                    1,
+                    16,
+                    384,
+                    384
+                ]
+            },
+            "class": "BudaDramQueue::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: _fused_op_128 (port_0) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "_fused_op_128": "Data"
+            },
+            "input_nodes": [
+                "_fused_op_128"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "e2e__fused_op_128_0",
+            "op_model": {
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Queue",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_129 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_129"
+            ],
+            "pybuda": 1,
+            "queue_type": "epoch_to_epoch",
+            "tags": {},
+            "type": "Queue",
+            "unique_id": 31565
+        },
+        "e2e_layernorm_959.dc.reduce_sum.5.lc1_0": {
+            "cache": {
+                "shape": [
+                    1,
+                    2,
+                    192,
+                    32
+                ]
+            },
+            "class": "BudaDramQueue::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: layernorm_959.dc.reduce_sum.5.lc1 (port_0) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "layernorm_959.dc.reduce_sum.5.lc1": "Data"
+            },
+            "input_nodes": [
+                "layernorm_959.dc.reduce_sum.5.lc1"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "e2e_layernorm_959.dc.reduce_sum.5.lc1_0",
+            "op_model": {
+                "t_stream_factor": {
+                    "dir": "R",
+                    "factor": [
+                        2,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Queue",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_127 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_127"
+            ],
+            "pybuda": 1,
+            "queue_type": "epoch_to_epoch",
+            "tags": {},
+            "type": "Queue",
+            "unique_id": 31563
+        },
+        "e2e_multiply_22_attempt_1_input_op_fork_nop2_0": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    32,
+                    384
+                ]
+            },
+            "class": "BudaDramQueue::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: multiply_22_attempt_1_input_op_fork_nop2 (port_0) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "multiply_22_attempt_1_input_op_fork_nop2": "Data"
+            },
+            "input_nodes": [
+                "multiply_22_attempt_1_input_op_fork_nop2"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "e2e_multiply_22_attempt_1_input_op_fork_nop2_0",
+            "op_model": {
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Queue",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_114 (port_0)",
+                "Data: _fused_op_121 (port_0)",
+                "Data: _fused_op_128 (port_0)",
+                "Data: _fused_op_135 (port_0)",
+                "Data: _fused_op_142 (port_0)",
+                "Data: _fused_op_149 (port_0)",
+                "Data: _fused_op_156 (port_0)",
+                "Data: _fused_op_163 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_114",
+                "_fused_op_121",
+                "_fused_op_128",
+                "_fused_op_135",
+                "_fused_op_142",
+                "_fused_op_149",
+                "_fused_op_156",
+                "_fused_op_163"
+            ],
+            "pybuda": 1,
+            "queue_type": "epoch_to_epoch",
+            "tags": {},
+            "type": "Queue",
+            "unique_id": 31554
+        },
+        "e2e_softmax_978.dc.reduce_max.0_0": {
+            "cache": {
+                "shape": [
+                    1,
+                    16,
+                    384,
+                    32
+                ]
+            },
+            "class": "BudaDramQueue::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: softmax_978.dc.reduce_max.0 (port_0) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "softmax_978.dc.reduce_max.0": "Data"
+            },
+            "input_nodes": [
+                "softmax_978.dc.reduce_max.0"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "e2e_softmax_978.dc.reduce_max.0_0",
+            "op_model": {
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Queue",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_129 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_129"
+            ],
+            "pybuda": 1,
+            "queue_type": "epoch_to_epoch",
+            "tags": {},
+            "type": "Queue",
+            "unique_id": 31566
+        },
+        "input_1_multiply_976": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    32,
+                    32
+                ]
+            },
+            "chip_id": 0,
+            "class": "constant",
+            "constant_dims": [
+                1
+            ],
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "input_1_multiply_976",
+            "op_model": {
+                "execution_cycles": 0,
+                "grid_shape": [
+                    1,
+                    1
+                ],
+                "input_shapes": [],
+                "inputs": [],
+                "op_model_id": 2937368,
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 1,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 1
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_128 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_128"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": false,
+            "tags": {
+                "original_op_type": "add"
+            },
+            "tile_broadcast": [],
+            "type": "Constant",
+            "unique_id": 29039
+        },
+        "matmul_962": {
+            "accumulate_df": "Float16_b",
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "chip_id": 0,
+            "class": "matmul",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "fidelity": "HiFi3",
+            "gradient_op": false,
+            "grid_end": [
+                6,
+                3
+            ],
+            "grid_start": [
+                0,
+                1
+            ],
+            "incoming_edge_port_info": [
+                "Data: _fused_op_127 (port_0) ublock_order(c)",
+                "Data: bert.encoder.layer.18.attention.self.query.weight (port_1) ublock_order(r)",
+                "Data: bert.encoder.layer.18.attention.self.query.bias (port_2) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "_fused_op_127": "Data",
+                "bert.encoder.layer.18.attention.self.query.bias": "Data",
+                "bert.encoder.layer.18.attention.self.query.weight": "Data"
+            },
+            "input_nodes": [
+                "_fused_op_127",
+                "bert.encoder.layer.18.attention.self.query.weight",
+                "bert.encoder.layer.18.attention.self.query.bias"
+            ],
+            "input_tms": [
+                [],
+                [],
+                [
+                    {
+                        "op_type": {
+                            "attrs": [
+                                2,
+                                12,
+                                false
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "broadcast"
+                        }
+                    }
+                ]
+            ],
+            "intermediate_df": "Float16_b",
+            "ir": "buda",
+            "name": "matmul_962",
+            "op_model": {
+                "execution_cycles": 65172,
+                "grid_shape": [
+                    6,
+                    2
+                ],
+                "input_shapes": [
+                    [
+                        1,
+                        1,
+                        12,
+                        32
+                    ],
+                    [
+                        1,
+                        1,
+                        32,
+                        32
+                    ],
+                    [
+                        1,
+                        1,
+                        12,
+                        32
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 2,
+                            "tblock_n": 8,
+                            "ublock_ct": 4,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 96
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 2,
+                            "t": 1,
+                            "tblock_m": 8,
+                            "tblock_n": 1,
+                            "ublock_ct": 8,
+                            "ublock_rt": 4
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 128
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 12,
+                            "tblock_n": 2,
+                            "ublock_ct": 8,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 16,
+                        "l1_size_tiles": 16
+                    }
+                ],
+                "op_model_id": 2609031,
+                "op_type": "matmul",
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 2,
+                            "mblock_n": 2,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 8,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 64
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {
+                    "bias": true,
+                    "kernel_broadcast": {
+                        "input_2": 16
+                    },
+                    "l1_acc": true,
+                    "m_k": 8,
+                    "u_kt": 4
+                },
+                "named_attrs": {},
+                "type": "matmul"
+            },
+            "opcode": "BudaOp",
+            "outgoing_edge_port_info": [
+                "Data: matmul_974 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_974"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEncoder::encoder/transformers.models.bert.modeling_bert.BertLayer::layer.18/transformers.models.bert.modeling_bert.BertAttention::attention/transformers.models.bert.modeling_bert.BertSelfAttention::self/torch.nn.modules.linear.Linear::query",
+                "original_op_name": "matmul_962",
+                "original_op_type": "matmul"
+            },
+            "type": "matmul",
+            "unique_id": 29023
+        },
+        "matmul_968": {
+            "accumulate_df": "Float16_b",
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "chip_id": 0,
+            "class": "matmul",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "fidelity": "HiFi3",
+            "gradient_op": false,
+            "grid_end": [
+                6,
+                5
+            ],
+            "grid_start": [
+                0,
+                3
+            ],
+            "incoming_edge_port_info": [
+                "Data: _fused_op_127 (port_0) ublock_order(c)",
+                "Data: bert.encoder.layer.18.attention.self.key.weight (port_1) ublock_order(r)",
+                "Data: bert.encoder.layer.18.attention.self.key.bias (port_2) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "_fused_op_127": "Data",
+                "bert.encoder.layer.18.attention.self.key.bias": "Data",
+                "bert.encoder.layer.18.attention.self.key.weight": "Data"
+            },
+            "input_nodes": [
+                "_fused_op_127",
+                "bert.encoder.layer.18.attention.self.key.weight",
+                "bert.encoder.layer.18.attention.self.key.bias"
+            ],
+            "input_tms": [
+                [],
+                [],
+                [
+                    {
+                        "op_type": {
+                            "attrs": [
+                                2,
+                                12,
+                                false
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "broadcast"
+                        }
+                    }
+                ]
+            ],
+            "intermediate_df": "Float16_b",
+            "ir": "buda",
+            "name": "matmul_968",
+            "op_model": {
+                "execution_cycles": 65172,
+                "grid_shape": [
+                    6,
+                    2
+                ],
+                "input_shapes": [
+                    [
+                        1,
+                        1,
+                        12,
+                        32
+                    ],
+                    [
+                        1,
+                        1,
+                        32,
+                        32
+                    ],
+                    [
+                        1,
+                        1,
+                        12,
+                        32
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 2,
+                            "tblock_n": 8,
+                            "ublock_ct": 4,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 8
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 2,
+                            "t": 1,
+                            "tblock_m": 8,
+                            "tblock_n": 1,
+                            "ublock_ct": 8,
+                            "ublock_rt": 4
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 128
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 1,
+                            "tblock_m": 12,
+                            "tblock_n": 2,
+                            "ublock_ct": 8,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 16,
+                        "l1_size_tiles": 16
+                    }
+                ],
+                "op_model_id": 2609220,
+                "op_type": "matmul",
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 2,
+                            "mblock_n": 2,
+                            "t": 1,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 8,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 64
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {
+                    "bias": true,
+                    "kernel_broadcast": {
+                        "input_2": 16
+                    },
+                    "l1_acc": true,
+                    "m_k": 8,
+                    "u_kt": 4
+                },
+                "named_attrs": {},
+                "type": "matmul"
+            },
+            "opcode": "BudaOp",
+            "outgoing_edge_port_info": [
+                "Data: matmul_974 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "matmul_974"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEncoder::encoder/transformers.models.bert.modeling_bert.BertLayer::layer.18/transformers.models.bert.modeling_bert.BertAttention::attention/transformers.models.bert.modeling_bert.BertSelfAttention::self/torch.nn.modules.linear.Linear::key",
+                "original_op_name": "matmul_968",
+                "original_op_type": "matmul"
+            },
+            "type": "matmul",
+            "unique_id": 29029
+        },
+        "matmul_974": {
+            "accumulate_df": "Float16_b",
+            "cache": {
+                "shape": [
+                    1,
+                    16,
+                    384,
+                    384
+                ]
+            },
+            "chip_id": 0,
+            "class": "matmul",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "fidelity": "HiFi3",
+            "gradient_op": false,
+            "grid_end": [
+                6,
+                6
+            ],
+            "grid_start": [
+                0,
+                5
+            ],
+            "incoming_edge_port_info": [
+                "Data: matmul_962 (port_0) ublock_order(c)",
+                "Data: matmul_968 (port_1) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "matmul_962": "Data",
+                "matmul_968": "Data"
+            },
+            "input_nodes": [
+                "matmul_962",
+                "matmul_968"
+            ],
+            "input_tms": [
+                [
+                    {
+                        "op_type": {
+                            "attrs": [
+                                16
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "hslice"
+                        }
+                    }
+                ],
+                [
+                    {
+                        "op_type": {
+                            "attrs": [],
+                            "buda_attrs": {},
+                            "named_attrs": {
+                                "dim0": -2,
+                                "dim1": -1,
+                                "z_dim_slice": -1
+                            },
+                            "type": "transpose"
+                        }
+                    },
+                    {
+                        "op_type": {
+                            "attrs": [
+                                16
+                            ],
+                            "buda_attrs": {},
+                            "named_attrs": {},
+                            "type": "vslice"
+                        }
+                    }
+                ]
+            ],
+            "intermediate_df": "Float16_b",
+            "ir": "buda",
+            "name": "matmul_974",
+            "op_model": {
+                "execution_cycles": 68981,
+                "grid_shape": [
+                    6,
+                    1
+                ],
+                "input_shapes": [
+                    [
+                        1,
+                        16,
+                        12,
+                        2
+                    ],
+                    [
+                        1,
+                        16,
+                        2,
+                        12
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 16,
+                            "tblock_m": 2,
+                            "tblock_n": 2,
+                            "ublock_ct": 1,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 363
+                    },
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 2,
+                            "t": 16,
+                            "tblock_m": 2,
+                            "tblock_n": 1,
+                            "ublock_ct": 6,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 24
+                    }
+                ],
+                "op_model_id": 2609603,
+                "op_type": "matmul",
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 2,
+                            "mblock_n": 2,
+                            "t": 16,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 6,
+                            "ublock_rt": 1
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 48
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "op_type": {
+                "attrs": [],
+                "buda_attrs": {
+                    "l1_acc": true,
+                    "m_k": 2,
+                    "u_kt": 1
+                },
+                "named_attrs": {},
+                "type": "matmul"
+            },
+            "opcode": "BudaOp",
+            "outgoing_edge_port_info": [
+                "Data: _fused_op_128 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "_fused_op_128"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEncoder::encoder/transformers.models.bert.modeling_bert.BertLayer::layer.18/transformers.models.bert.modeling_bert.BertAttention::attention/transformers.models.bert.modeling_bert.BertSelfAttention::self",
+                "original_op_name": "matmul_974",
+                "original_op_type": "matmul"
+            },
+            "type": "matmul",
+            "unique_id": 29036
+        },
+        "softmax_978.dc.reduce_max.0": {
+            "accumulate_df": "Float16_b",
+            "cache": {
+                "shape": [
+                    1,
+                    16,
+                    384,
+                    32
+                ]
+            },
+            "chip_id": 0,
+            "class": "reduce(3,max,16,)",
+            "epoch": 45,
+            "epoch_type": "Forward",
+            "fidelity": "HiFi3",
+            "gradient_op": false,
+            "grid_end": [
+                6,
+                8
+            ],
+            "grid_start": [
+                0,
+                7
+            ],
+            "incoming_edge_port_info": [
+                "Data: _fused_op_128 (port_0) ublock_order(r)"
+            ],
+            "input_node_to_edge_type": {
+                "_fused_op_128": "Data"
+            },
+            "input_nodes": [
+                "_fused_op_128"
+            ],
+            "input_tms": [
+                []
+            ],
+            "intermediate_df": "Float16_b",
+            "ir": "buda",
+            "name": "softmax_978.dc.reduce_max.0",
+            "op_model": {
+                "execution_cycles": 2912,
+                "grid_shape": [
+                    6,
+                    1
+                ],
+                "input_shapes": [
+                    [
+                        1,
+                        16,
+                        12,
+                        12
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 16,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 12,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 48
+                    }
+                ],
+                "op_model_id": 2609887,
+                "op_type": "reduce",
+                "outputs": [
+                    {
+                        "block_shape": {
+                            "mblock_m": 1,
+                            "mblock_n": 1,
+                            "t": 16,
+                            "tblock_m": 1,
+                            "tblock_n": 1,
+                            "ublock_ct": 1,
+                            "ublock_rt": 2
+                        },
+                        "buffer_factor": 2,
+                        "data_format": "Float16_b",
+                        "kernel_broadcast_tiles": 0,
+                        "l1_size_tiles": 4
+                    }
+                ],
+                "t_stream_factor": {
+                    "dir": "None",
+                    "factor": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "op_type": {
+                "attrs": [
+                    3,
+                    "max",
+                    16
+                ],
+                "buda_attrs": {
+                    "dim": "c",
+                    "m_k": 1,
+                    "type": "max",
+                    "u_kt": 12
+                },
+                "named_attrs": {},
+                "type": "reduce"
+            },
+            "opcode": "BudaOp",
+            "outgoing_edge_port_info": [
+                "Data: e2e_softmax_978.dc.reduce_max.0_0 (port_0)"
+            ],
+            "output_df": "Float16_b",
+            "output_nodes": [
+                "e2e_softmax_978.dc.reduce_max.0_0"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEncoder::encoder/transformers.models.bert.modeling_bert.BertLayer::layer.18/transformers.models.bert.modeling_bert.BertAttention::attention/transformers.models.bert.modeling_bert.BertSelfAttention::self",
+                "original_op_name": "softmax_978",
+                "original_op_type": "softmax"
+            },
+            "type": "reduce",
+            "unique_id": 29043
+        }
+    },
+    "topological_sorted_nodes": [
+        "e2e_multiply_22_attempt_1_input_op_fork_nop2_0",
+        "dc.input_tensor.layernorm_959.6",
+        "dc.input_tensor.layernorm_959.8",
+        "bert.encoder.layer.17.output.LayerNorm.weight",
+        "bert.encoder.layer.17.output.LayerNorm.bias",
+        "e2e_layernorm_959.dc.reduce_sum.5.lc1_0",
+        "e2e__fused_op_126_0",
+        "_fused_op_127",
+        "bert.encoder.layer.18.attention.self.query.weight",
+        "bert.encoder.layer.18.attention.self.query.bias",
+        "matmul_962",
+        "bert.encoder.layer.18.attention.self.key.weight",
+        "bert.encoder.layer.18.attention.self.key.bias",
+        "matmul_968",
+        "matmul_974",
+        "input_1_multiply_976",
+        "_fused_op_128",
+        "softmax_978.dc.reduce_max.0",
+        "e2e__fused_op_128_0",
+        "e2e_softmax_978.dc.reduce_max.0_0",
+        "e2e__fused_op_127_0"
+    ]
+}

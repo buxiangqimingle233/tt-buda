@@ -1,0 +1,298 @@
+{
+    "graph": {},
+    "nodes": {
+        "act1": {
+            "cache": {
+                "shape": [
+                    "1",
+                    "128",
+                    "32"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "act1",
+            "opcode": "Input",
+            "output_nodes": [
+                "reshape_7"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 0
+        },
+        "act2": {
+            "cache": {
+                "shape": [
+                    "1",
+                    "128",
+                    "32"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "act2",
+            "opcode": "Input",
+            "output_nodes": [
+                "reshape_11"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 1
+        },
+        "add_4": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "add",
+            "epoch": 0,
+            "input_nodes": [
+                "reshape_5",
+                "reshape_9"
+            ],
+            "ir": "pybuda",
+            "name": "add_4",
+            "opcode": "RelayOp",
+            "output_nodes": [],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::add, jit._trace.TopLevelTracedModule: PyTorchTestModule::, 0xc3b0d50), 0, 0, 0, 0)",
+            "type": "add",
+            "unique_id": 4
+        },
+        "nn.dense_10": {
+            "cache": {
+                "shape": [
+                    128,
+                    128
+                ]
+            },
+            "class": "nn.dense",
+            "epoch": 0,
+            "input_nodes": [
+                "reshape_11",
+                "transpose_12"
+            ],
+            "ir": "pybuda",
+            "name": "nn.dense_10",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "reshape_9"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::matmul, jit._trace.TopLevelTracedModule: PyTorchTestModule::, 0xc404cc0), 0, 0, 0, 0)",
+            "type": "nn.dense",
+            "unique_id": 10
+        },
+        "nn.dense_6": {
+            "cache": {
+                "shape": [
+                    128,
+                    128
+                ]
+            },
+            "class": "nn.dense",
+            "epoch": 0,
+            "input_nodes": [
+                "reshape_7",
+                "transpose_8"
+            ],
+            "ir": "pybuda",
+            "name": "nn.dense_6",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "reshape_5"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::matmul, jit._trace.TopLevelTracedModule: PyTorchTestModule::, 0xc404cc0), 0, 0, 0, 0)",
+            "type": "nn.dense",
+            "unique_id": 6
+        },
+        "reshape_11": {
+            "cache": {
+                "shape": [
+                    128,
+                    32
+                ]
+            },
+            "class": "reshape",
+            "epoch": 0,
+            "input_nodes": [
+                "act2"
+            ],
+            "ir": "pybuda",
+            "name": "reshape_11",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "nn.dense_10"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::matmul, jit._trace.TopLevelTracedModule: PyTorchTestModule::, 0xc404cc0), 0, 0, 0, 0)",
+            "type": "reshape",
+            "unique_id": 11
+        },
+        "reshape_5": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "reshape",
+            "epoch": 0,
+            "input_nodes": [
+                "nn.dense_6"
+            ],
+            "ir": "pybuda",
+            "name": "reshape_5",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "add_4"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::matmul, jit._trace.TopLevelTracedModule: PyTorchTestModule::, 0xc404cc0), 0, 0, 0, 0)",
+            "type": "reshape",
+            "unique_id": 5
+        },
+        "reshape_7": {
+            "cache": {
+                "shape": [
+                    128,
+                    32
+                ]
+            },
+            "class": "reshape",
+            "epoch": 0,
+            "input_nodes": [
+                "act1"
+            ],
+            "ir": "pybuda",
+            "name": "reshape_7",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "nn.dense_6"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::matmul, jit._trace.TopLevelTracedModule: PyTorchTestModule::, 0xc404cc0), 0, 0, 0, 0)",
+            "type": "reshape",
+            "unique_id": 7
+        },
+        "reshape_9": {
+            "cache": {
+                "shape": [
+                    1,
+                    128,
+                    128
+                ]
+            },
+            "class": "reshape",
+            "epoch": 0,
+            "input_nodes": [
+                "nn.dense_10"
+            ],
+            "ir": "pybuda",
+            "name": "reshape_9",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "add_4"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::matmul, jit._trace.TopLevelTracedModule: PyTorchTestModule::, 0xc404cc0), 0, 0, 0, 0)",
+            "type": "reshape",
+            "unique_id": 9
+        },
+        "transpose_12": {
+            "cache": {
+                "shape": [
+                    128,
+                    32
+                ]
+            },
+            "class": "transpose",
+            "epoch": 0,
+            "input_nodes": [
+                "weights2"
+            ],
+            "ir": "pybuda",
+            "name": "transpose_12",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "nn.dense_10"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::matmul, jit._trace.TopLevelTracedModule: PyTorchTestModule::, 0xc404cc0), 0, 0, 0, 0)",
+            "type": "transpose",
+            "unique_id": 12
+        },
+        "transpose_8": {
+            "cache": {
+                "shape": [
+                    128,
+                    32
+                ]
+            },
+            "class": "transpose",
+            "epoch": 0,
+            "input_nodes": [
+                "weights1"
+            ],
+            "ir": "pybuda",
+            "name": "transpose_8",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "nn.dense_6"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::matmul, jit._trace.TopLevelTracedModule: PyTorchTestModule::, 0xc404cc0), 0, 0, 0, 0)",
+            "type": "transpose",
+            "unique_id": 8
+        },
+        "weights1": {
+            "cache": {
+                "shape": [
+                    "32",
+                    "128"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "weights1",
+            "opcode": "Input",
+            "output_nodes": [
+                "transpose_8"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 2
+        },
+        "weights2": {
+            "cache": {
+                "shape": [
+                    "32",
+                    "128"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "weights2",
+            "opcode": "Input",
+            "output_nodes": [
+                "transpose_12"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 3
+        }
+    }
+}

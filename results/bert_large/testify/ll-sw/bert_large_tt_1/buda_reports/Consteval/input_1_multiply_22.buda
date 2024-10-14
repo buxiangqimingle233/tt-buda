@@ -1,0 +1,135 @@
+{
+    "graph": {},
+    "nodes": {
+        "input_1_multiply_22": {
+            "cache": {
+                "shape": [
+                    1
+                ]
+            },
+            "class": "constant",
+            "constant_dims": [
+                1
+            ],
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "input_1_multiply_22",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: input_1_multiply_22_s_brcst_m1_0_0 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "input_1_multiply_22_s_brcst_m1_0_0"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": false,
+            "tags": {},
+            "tile_broadcast": [],
+            "type": "Constant",
+            "unique_id": 3567
+        },
+        "input_1_multiply_22.consteval_graph.output": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    1,
+                    32
+                ]
+            },
+            "class": "Output",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: input_1_multiply_22_s_brcst_m1_0_0 (port_0)"
+            ],
+            "input_node_to_edge_type": {
+                "input_1_multiply_22_s_brcst_m1_0_0": "Data"
+            },
+            "input_nodes": [
+                "input_1_multiply_22_s_brcst_m1_0_0"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "is_saved_intermediate": false,
+            "memory_access": "FIFO",
+            "name": "input_1_multiply_22.consteval_graph.output",
+            "opcode": "Output",
+            "outgoing_edge_port_info": [],
+            "output_df": "Float32",
+            "output_nodes": [],
+            "pybuda": 1,
+            "queue_type": "output",
+            "tags": {},
+            "type": "Output",
+            "unique_id": 3568
+        },
+        "input_1_multiply_22_s_brcst_m1_0_0": {
+            "cache": {
+                "shape": [
+                    1,
+                    1,
+                    1,
+                    32
+                ]
+            },
+            "class": "tile_broadcast(-1,32,)",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: input_1_multiply_22 (port_0)"
+            ],
+            "input_node_to_edge_type": {
+                "input_1_multiply_22": "Data"
+            },
+            "input_nodes": [
+                "input_1_multiply_22"
+            ],
+            "input_tms": [
+                []
+            ],
+            "ir": "pybuda",
+            "name": "input_1_multiply_22_s_brcst_m1_0_0",
+            "op_type": {
+                "attrs": [
+                    -1,
+                    32
+                ],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "tile_broadcast"
+            },
+            "opcode": "PyBudaOp",
+            "outgoing_edge_port_info": [
+                "Data: input_1_multiply_22.consteval_graph.output (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "input_1_multiply_22.consteval_graph.output"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "layer": "transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert",
+                "original_op_name": "multiply_22",
+                "original_op_type": "multiply"
+            },
+            "type": "tile_broadcast",
+            "unique_id": 3569
+        }
+    },
+    "topological_sorted_nodes": [
+        "input_1_multiply_22",
+        "input_1_multiply_22_s_brcst_m1_0_0",
+        "input_1_multiply_22.consteval_graph.output"
+    ]
+}

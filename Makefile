@@ -81,7 +81,8 @@ ifeq ($(EMULATION_DEVICE_EN), 1)
     TENSIX_EMULATION_ZCUI_WORK = $(TENSIX_EMULATION_ROOT)/targets/tensix_2x2_1dram_BH/zcui.work
 endif
 
-all: update_submodules build ;
+# all: update_submodules build ;
+all: build
 
 # These must be in dependency order (enforces no circular deps)
 include python_env/module.mk		# DEBUG: no python deps

@@ -1,0 +1,4 @@
+content:
+  name: ll-sw.bert_large_tt_1
+  output-dir: /home/tt-buda/results/bert_large/testify/ll-sw//bert_large_tt_1
+type: summary

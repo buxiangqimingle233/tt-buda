@@ -249,9 +249,10 @@ class Device(TTObject):
         elif arch.lower() == "grayskull":
             self._harvesting = None
         else:
-            raise util.TTFatalException(
-                f"Cluster description is not valid. 'harvesting_desc' reads: {harvesting_desc}"
-            )
+            self._harvesting = None
+            # raise util.TTFatalException(
+            #     f"Cluster description is not valid. 'harvesting_desc' reads: {harvesting_desc}"
+            # )
 
         self._create_harvesting_maps()
         self._create_nocVirt_to_nocTr_map()

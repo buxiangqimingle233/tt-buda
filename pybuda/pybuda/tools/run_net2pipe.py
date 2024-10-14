@@ -36,10 +36,10 @@ def generate_blobgen_cmd(
     temporal_epoch,
     chip_ids,
 ):
-    # blobgen_exe = root + "/tb/llk_tb/overlay/blob_gen.rb"
+    blobgen_exe = root + "tb/llk_tb/overlay/blob_gen.rb"
 
     # HACK: the blobgen has been moved to src/overlay
-    blobgen_exe = root + "src/overlay/blob_gen.rb"
+    # blobgen_exe = root + "src/overlay/blob_gen.rb"
     temporal_epoch_graph_name = "pipegen_epoch" + str(temporal_epoch)
  
     # parse general spec

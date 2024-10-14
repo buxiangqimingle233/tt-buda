@@ -1,0 +1,390 @@
+{
+    "graph": {},
+    "nodes": {
+        "add_8": {
+            "cache": {
+                "shape": [
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "class": "add",
+            "epoch": 0,
+            "input_nodes": [
+                "add_9",
+                "embedding_14"
+            ],
+            "ir": "pybuda",
+            "name": "add_8",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "tuple_7"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::add_, jit._trace.TopLevelTracedModule: transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEmbeddings::embeddings, 0x8ab40e80), 0, 0, 0, 0)",
+            "type": "add",
+            "unique_id": 8
+        },
+        "add_9": {
+            "cache": {
+                "shape": [
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "class": "add",
+            "epoch": 0,
+            "input_nodes": [
+                "embedding_10",
+                "embedding_12"
+            ],
+            "ir": "pybuda",
+            "name": "add_9",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "add_8"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::add, jit._trace.TopLevelTracedModule: transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEmbeddings::embeddings, 0x79f6e300), 0, 0, 0, 0)",
+            "type": "add",
+            "unique_id": 9
+        },
+        "attention_mask_1": {
+            "cache": {
+                "shape": [
+                    "1",
+                    "384"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "attention_mask_1",
+            "opcode": "Input",
+            "output_nodes": [
+                "tuple_7"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 6
+        },
+        "bert.embeddings.position_embeddings.weight": {
+            "cache": {
+                "shape": [
+                    "512",
+                    "1024"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "bert.embeddings.position_embeddings.weight",
+            "opcode": "Input",
+            "output_nodes": [
+                "embedding_14"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 4
+        },
+        "bert.embeddings.position_ids": {
+            "cache": {
+                "shape": [
+                    "1",
+                    "512"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "bert.embeddings.position_ids",
+            "opcode": "Input",
+            "output_nodes": [
+                "strided_slice_16"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 5
+        },
+        "bert.embeddings.token_type_embeddings.weight": {
+            "cache": {
+                "shape": [
+                    "2",
+                    "1024"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "bert.embeddings.token_type_embeddings.weight",
+            "opcode": "Input",
+            "output_nodes": [
+                "embedding_12"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 2
+        },
+        "bert.embeddings.word_embeddings.weight": {
+            "cache": {
+                "shape": [
+                    "28996",
+                    "1024"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "bert.embeddings.word_embeddings.weight",
+            "opcode": "Input",
+            "output_nodes": [
+                "embedding_10"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 0
+        },
+        "cast_11": {
+            "cache": {
+                "shape": [
+                    1,
+                    384
+                ]
+            },
+            "class": "cast",
+            "epoch": 0,
+            "input_nodes": [
+                "input_ids"
+            ],
+            "ir": "pybuda",
+            "name": "cast_11",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "embedding_10"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::embedding, jit._trace.TopLevelTracedModule: transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEmbeddings::embeddings/torch.nn.modules.sparse.Embedding::word_embeddings, 0x8ab28c40), 0, 0, 0, 0)",
+            "type": "cast",
+            "unique_id": 11
+        },
+        "cast_13": {
+            "cache": {
+                "shape": [
+                    1,
+                    384
+                ]
+            },
+            "class": "cast",
+            "epoch": 0,
+            "input_nodes": [
+                "input_1"
+            ],
+            "ir": "pybuda",
+            "name": "cast_13",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "embedding_12"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::embedding, jit._trace.TopLevelTracedModule: transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEmbeddings::embeddings/torch.nn.modules.sparse.Embedding::token_type_embeddings, 0x2216b40), 0, 0, 0, 0)",
+            "type": "cast",
+            "unique_id": 13
+        },
+        "cast_15": {
+            "cache": {
+                "shape": [
+                    1,
+                    384
+                ]
+            },
+            "class": "cast",
+            "epoch": 0,
+            "input_nodes": [
+                "strided_slice_16"
+            ],
+            "ir": "pybuda",
+            "name": "cast_15",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "embedding_14"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::embedding, jit._trace.TopLevelTracedModule: transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEmbeddings::embeddings/torch.nn.modules.sparse.Embedding::position_embeddings, 0x917a3520), 0, 0, 0, 0)",
+            "type": "cast",
+            "unique_id": 15
+        },
+        "embedding_10": {
+            "cache": {
+                "shape": [
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "class": "embedding",
+            "epoch": 0,
+            "input_nodes": [
+                "bert.embeddings.word_embeddings.weight",
+                "cast_11"
+            ],
+            "ir": "pybuda",
+            "name": "embedding_10",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "add_9"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::embedding, jit._trace.TopLevelTracedModule: transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEmbeddings::embeddings/torch.nn.modules.sparse.Embedding::word_embeddings, 0x8ab28c40), 0, 0, 0, 0)",
+            "type": "embedding",
+            "unique_id": 10
+        },
+        "embedding_12": {
+            "cache": {
+                "shape": [
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "class": "embedding",
+            "epoch": 0,
+            "input_nodes": [
+                "bert.embeddings.token_type_embeddings.weight",
+                "cast_13"
+            ],
+            "ir": "pybuda",
+            "name": "embedding_12",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "add_9"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::embedding, jit._trace.TopLevelTracedModule: transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEmbeddings::embeddings/torch.nn.modules.sparse.Embedding::token_type_embeddings, 0x2216b40), 0, 0, 0, 0)",
+            "type": "embedding",
+            "unique_id": 12
+        },
+        "embedding_14": {
+            "cache": {
+                "shape": [
+                    1,
+                    384,
+                    1024
+                ]
+            },
+            "class": "embedding",
+            "epoch": 0,
+            "input_nodes": [
+                "bert.embeddings.position_embeddings.weight",
+                "cast_15"
+            ],
+            "ir": "pybuda",
+            "name": "embedding_14",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "add_8"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::embedding, jit._trace.TopLevelTracedModule: transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEmbeddings::embeddings/torch.nn.modules.sparse.Embedding::position_embeddings, 0x917a3520), 0, 0, 0, 0)",
+            "type": "embedding",
+            "unique_id": 14
+        },
+        "input_1": {
+            "cache": {
+                "shape": [
+                    "1",
+                    "384"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "input_1",
+            "opcode": "Input",
+            "output_nodes": [
+                "cast_13"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 3
+        },
+        "input_ids": {
+            "cache": {
+                "shape": [
+                    "1",
+                    "384"
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "input_nodes": [],
+            "ir": "pybuda",
+            "name": "input_ids",
+            "opcode": "Input",
+            "output_nodes": [
+                "cast_11"
+            ],
+            "pybuda": 1,
+            "type": "Input::input",
+            "unique_id": 1
+        },
+        "strided_slice_16": {
+            "cache": {
+                "shape": [
+                    1,
+                    384
+                ]
+            },
+            "class": "strided_slice",
+            "epoch": 0,
+            "input_nodes": [
+                "bert.embeddings.position_ids"
+            ],
+            "ir": "pybuda",
+            "name": "strided_slice_16",
+            "opcode": "RelayOp",
+            "output_nodes": [
+                "cast_15"
+            ],
+            "pybuda": 1,
+            "span": "Span(SourceName(C.graph: aten::slice, jit._trace.TopLevelTracedModule: transformers.models.bert.modeling_bert.BertForQuestionAnswering::/transformers.models.bert.modeling_bert.BertModel::bert/transformers.models.bert.modeling_bert.BertEmbeddings::embeddings, 0x2fb4dde0), 0, 0, 0, 0)",
+            "type": "strided_slice",
+            "unique_id": 16
+        },
+        "tuple_7": {
+            "cache": {
+                "shape": [
+                    [
+                        "1",
+                        "384",
+                        "1024"
+                    ],
+                    [
+                        "1",
+                        "384"
+                    ]
+                ]
+            },
+            "class": "tuple",
+            "epoch": 0,
+            "input_nodes": [
+                "add_8",
+                "attention_mask_1"
+            ],
+            "ir": "pybuda",
+            "name": "tuple_7",
+            "opcode": "RelayOp",
+            "output_nodes": [],
+            "pybuda": 1,
+            "type": "tuple",
+            "unique_id": 7
+        }
+    }
+}

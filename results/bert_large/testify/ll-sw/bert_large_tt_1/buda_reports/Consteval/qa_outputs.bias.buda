@@ -1,0 +1,129 @@
+{
+    "graph": {},
+    "nodes": {
+        "index_1282": {
+            "cache": {
+                "shape": [
+                    1
+                ]
+            },
+            "class": "index(-1,0,1,1,)",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "gradient_op": false,
+            "incoming_edge_port_info": [
+                "Data: qa_outputs.bias (port_0)"
+            ],
+            "input_node_to_edge_type": {
+                "qa_outputs.bias": "Data"
+            },
+            "input_nodes": [
+                "qa_outputs.bias"
+            ],
+            "input_tms": [
+                []
+            ],
+            "ir": "pybuda",
+            "name": "index_1282",
+            "op_type": {
+                "attrs": [
+                    -1,
+                    0,
+                    1,
+                    1
+                ],
+                "buda_attrs": {},
+                "named_attrs": {},
+                "type": "index"
+            },
+            "opcode": "PyBudaOp",
+            "outgoing_edge_port_info": [
+                "Data: qa_outputs.bias.consteval_graph.output (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "qa_outputs.bias.consteval_graph.output"
+            ],
+            "pybuda": 1,
+            "tags": {
+                "original_op_name": "index_1282",
+                "original_op_type": "index"
+            },
+            "type": "index",
+            "unique_id": 1717
+        },
+        "qa_outputs.bias": {
+            "cache": {
+                "shape": [
+                    2
+                ]
+            },
+            "class": "Input::",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [],
+            "input_node_to_edge_type": {},
+            "input_nodes": [],
+            "is_cross_epoch_type": false,
+            "memory_access": "FIFO",
+            "name": "qa_outputs.bias",
+            "opcode": "Input",
+            "outgoing_edge_port_info": [
+                "Data: index_1282 (port_0)"
+            ],
+            "output_df": "Float32",
+            "output_nodes": [
+                "index_1282"
+            ],
+            "pybuda": 1,
+            "queue_type": "input",
+            "requires_grad": true,
+            "tags": {
+                "original_op_name": "qa_outputs.bias"
+            },
+            "tile_broadcast": [],
+            "type": "Input::parameter",
+            "unique_id": 1712
+        },
+        "qa_outputs.bias.consteval_graph.output": {
+            "cache": {
+                "shape": [
+                    1
+                ]
+            },
+            "class": "Output",
+            "epoch": 0,
+            "epoch_type": "Forward",
+            "incoming_edge_port_info": [
+                "Data: index_1282 (port_0)"
+            ],
+            "input_node_to_edge_type": {
+                "index_1282": "Data"
+            },
+            "input_nodes": [
+                "index_1282"
+            ],
+            "input_tms": [
+                []
+            ],
+            "is_cross_epoch_type": false,
+            "is_saved_intermediate": false,
+            "memory_access": "FIFO",
+            "name": "qa_outputs.bias.consteval_graph.output",
+            "opcode": "Output",
+            "outgoing_edge_port_info": [],
+            "output_df": "Float32",
+            "output_nodes": [],
+            "pybuda": 1,
+            "queue_type": "output",
+            "tags": {},
+            "type": "Output",
+            "unique_id": 1713
+        }
+    },
+    "topological_sorted_nodes": [
+        "qa_outputs.bias",
+        "index_1282",
+        "qa_outputs.bias.consteval_graph.output"
+    ]
+}

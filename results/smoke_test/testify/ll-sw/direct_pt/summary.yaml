@@ -1,0 +1,4 @@
+content:
+  name: ll-sw.direct_pt
+  output-dir: /home/tt-buda/results/smoke_test/testify/ll-sw//direct_pt
+type: summary

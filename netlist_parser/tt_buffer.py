@@ -7,7 +7,7 @@ from tt_coordinate import OnChipCoordinate
 
 # Constructed from epoch's pipegen.yaml. Contains information about a buffer.
 class Buffer(TTObject):
-    def __init__(self, graph, data):
+    def __init__(self, graph, data, op_model):
         data["core_coordinates"] = tuple(data["core_coordinates"])
         self.root = data
         self._id = self.root["uniqid"]
@@ -19,6 +19,7 @@ class Buffer(TTObject):
 
         self.input_buffer_of_same_op = TTObjectIDDict()
         self.output_buffer_of_same_op = TTObjectIDDict()
+        self.op_model = op_model
 
         self.replicated_buffers = []
 
@@ -28,6 +29,11 @@ class Buffer(TTObject):
         R = r["core_coordinates"][0]
         C = r["core_coordinates"][1]
         return f"{super().__str__()} {r['md_op_name']}:[{R},{C}]"
+
+    def get_delay_of_attached_op_model(self):
+        if self.op_model is None:
+            return 0
+        return self.op_model["execution_cycles"]
 
     def is_output_of_pipe(self):
         return len(self.output_of_pipes) > 0
@@ -64,6 +70,9 @@ class Buffer(TTObject):
     def is_dram_buffer(self):
         return self.root["core_coordinates"] == (255, 255) or "dram" in self.root["buffer_type"]
     
+    def is_intermediate_buffer(self):
+        return self.root["buffer_type"] == "intermediate"
+
     def loc(self):
         if self.root["core_coordinates"] == (255, 255): 
             # An (255, 255) coordination indicates an DRAM blob, we should determie its location by dram_channel

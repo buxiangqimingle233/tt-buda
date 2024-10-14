@@ -15,8 +15,8 @@ from tt_buffermap import QueueBufferMapQueue, QueueBufferMap
 
 # HACK: No runtime data yaml file needed, hardcoded with inputs instead
 
-class SimpNetlist:
-    def __init__(self, netlist_filepath, rundir):
+class SimpleNetList:
+    def __init__(self, netlist_filepath, rundir, devices):
         # 1. Set the file. It will be lazy loaded on first access
         assert netlist_filepath is not None
         
@@ -40,7 +40,10 @@ class SimpNetlist:
         
         # This is invoked by tt_stream
         # self.devices = self.netlist_file.root["devices"]
-        self.devices = [GrayskullDevice(0, "grayskull", {}, "/home/tt-buda/third_party/budabackend/device/grayskull_10x12.yaml", None)]
+        # self.devices = [GrayskullDevice(0, "grayskull", {}, "/home/tt-buda/third_party/budabackend/device/grayskull_10x12.yaml", None)]
+        if type(devices) != list:
+            devices = [devices]
+        self.devices = devices
 
         # 3. Load pipegen/blob yamls
         self.load_temporal_epochs(rundir)
@@ -122,11 +125,18 @@ class SimpNetlist:
 
             pipegen_file = f"{graph_dir}/overlay/pipegen.yaml"
             blob_file = f"{graph_dir}/overlay/blob.yaml"
+            # reportify_file = os.path.
+
+            reportify_dir = os.path.join(os.path.dirname(rundir), "testify/ll-sw")
+            reportify_dir = os.path.join(reportify_dir, os.listdir(reportify_dir)[0], "epoch_reports/EpochId")
+            
+            reportify_file = os.path.join(reportify_dir, f"post_placerpost_placer_epoch_id_{epoch_id}.buda")
             te = TemporalEpoch(
                 epoch_id,
                 self,
                 pipegen_file,
                 blob_file,
+                reportify_file,
                 [self.graph(g_name).root for g_name in graph_list],
             )
             te.graphs = TTObjectIDDict()
@@ -204,7 +214,7 @@ class SimpNetlist:
 
 
 if __name__ == "__main__":
-    a = SimpNetlist("/home/tt-buda/direct_pt_netlist.yaml", "/home/tt-buda/net2pipe_output")
+    a = SimpleNetList("/home/tt-buda/direct_pt_netlist.yaml", "/home/tt-buda/net2pipe_output")
     # print(a.temporal_epochs.first().buffers)
     b, c = a.temporal_epochs.first().buffers, a.temporal_epochs.first().streams
     print(a.temporal_epochs.first().streams)

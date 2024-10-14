@@ -15,3 +15,6 @@
 [submodule "third_party/benchmarking"]
 	path = third_party/benchmarking
 	url = https://github.com/tenstorrent/benchmarking.git
+[submodule "third_party/sfpi"]
+	path = third_party/sfpi
+	url = git@github.com:tenstorrent/sfpi-rel.git

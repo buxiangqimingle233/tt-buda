@@ -11,12 +11,13 @@ from tt_graph import Queue, Graph, Op
 import itertools
 from copy import copy
 from collections import defaultdict
-
+import json
 from typing import Dict, Sequence
 
 
+# Each epoch also corresponds to a spotify file at the json form. 
 class TemporalEpoch(TTObject):
-    def __init__(self, id, netlist, pipegen_filename, blob_filename, graph_roots):
+    def __init__(self, id, netlist, pipegen_filename, blob_filename, reportify_filename, graph_roots):
         # Pipegen.yaml is a special case since it contains multiple documents (separated by ---). It also depends on the
         # order of the documents. Each graph starts with "graph_name:" followed by graph's buffers. After all buffers are
         # loaded, we have an array of pipes.
@@ -49,6 +50,11 @@ class TemporalEpoch(TTObject):
         self.netlist = netlist  # Store netlist to have access to graphs.
         self.pipegen_yaml = util.YamlFile(pipegen_filename, post_process_pipegen_yaml)
         self.blob_yaml = util.YamlFile(blob_filename)
+        with open(reportify_filename) as f:
+            self.reportify_json = json.load(f)
+        self.op_models = {}
+        self.load_reportify()       # Unlike blob and pipegen, we load the reportify json file asap
+            
         self.graphs = None
 
         self.roots = graph_roots  # The entry in netlist file
@@ -85,7 +91,11 @@ class TemporalEpoch(TTObject):
             self.graphs.add(netlist_graph)
 
             for bid, val in pipegen_graph.items():
-                b = Buffer(netlist_graph, val)
+                if "md_op_name" not in val or val["md_op_name"] not in self.op_models:
+                    b = Buffer(netlist_graph, val, None)
+                else:
+                    b = Buffer(netlist_graph, val, self.op_models[val["md_op_name"]])
+
                 # print(b.root['tile_size'])
                 netlist_graph.temporal_epoch.buffers.add(b)
                 uniqid = val["uniqid"]
@@ -110,7 +120,7 @@ class TemporalEpoch(TTObject):
                     val_copy.real_copy_from(val)     # We explicitly allocated a new ryml.ryml.tree
                     val_copy["uniqid"] = uniqid + r * val["scatter_gather_num_tiles"]
 
-                    rb = Buffer(self, val_copy)
+                    rb = Buffer(netlist_graph, val_copy, self.op_models[val["md_op_name"]])
                     self.buffers[rb.id()] = rb
                     self.core_buffers_map[(chip, x, y)].append(b.id())
                     rb.replicated = True
@@ -278,6 +288,13 @@ class TemporalEpoch(TTObject):
                     for dest_stream_designator in dest_stream_designators:
                         dest_stream_id = self.stream_loc_id_map[dest_stream_designator]
                         self.stream_source_map[dest_stream_id][phase_id] = stream_id
+
+    def load_reportify(self):
+        for op_name, op_info in self.reportify_json["nodes"].items():
+            if "op_model" in op_info:
+                self.op_models[op_name] = op_info["op_model"]
+            else:
+                self.op_models[op_name] = None
 
     # Given a list of core coordinates, returns all buffers residing at those coordinates
     def get_core_buffers(self, core_coordinates_list_rc):

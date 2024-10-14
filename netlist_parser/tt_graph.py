@@ -75,6 +75,7 @@ class Op(TTObject):
         self.root = data
         self._id = name
         self.graph = graph
+        # Assign each op with a compute time
 
 
 class Graph(TTObject):

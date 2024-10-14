@@ -10,7 +10,7 @@ tt_debug
 build
 net2pipe_output/
 third_party/llvm
-
+third_party/*
 /llk_out/
 
 /test_*
@@ -49,6 +49,9 @@ third_party/llvm
 device_images
 generated_modules
 build_deps/
+
+wheels/
+env/
 
 # ClangD
 compile_commands.json

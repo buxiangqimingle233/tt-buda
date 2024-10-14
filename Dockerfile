@@ -1,5 +1,7 @@
 # Step 1: Use the specified base image
 FROM ghcr.io/tenstorrent/tt-buda/ubuntu-20-04-amd64/wh_b0:dev
+# FROM --platform=linux/arm64/v8 ttbuda_env:latest as build
+
 
 # Step 2: Define arguments for user and group
 ARG USER_NAME
@@ -13,3 +15,6 @@ RUN apt-get update -y && \
 # Step 4: Update pip
 RUN pip install --upgrade pip==24.0
 
+# Setup huggingface
+RUN pip install -U huggingface_hub hf_transfer
+RUN export HF_ENDPOINT=https://hf-mirror.com
